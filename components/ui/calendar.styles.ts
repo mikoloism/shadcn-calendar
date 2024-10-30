@@ -35,7 +35,7 @@ export const getClassNames = (props: CalendarProps): Partial<ClassNames> => {
     ),
     day_button: cn(
       buttonVariants({ variant: "ghost" }),
-      "h-8 w-8 p-0 font-normal aria-selected:opacity-100",
+      "h-8 w-8 p-0 font-normal group-[[aria-selected]]:opacity-100",
       "group-hover:group-[[aria-selected]]:bg-primary group-hover:group-[[aria-selected]]:text-primary-foreground"
     ),
     range_start: "day-range-start",
