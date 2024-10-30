@@ -18,6 +18,7 @@ function CalendarJalali({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
+      dir="rtl"
       className={cn("p-3", className)}
       classNames={{
         ...getClassNames(props),
