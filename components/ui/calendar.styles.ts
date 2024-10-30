@@ -8,7 +8,7 @@ export const getClassNames = (props: CalendarProps): Partial<ClassNames> => {
     root: "border rounded-md",
     months:
       "flex flex-col items-center space-y-4 sm:space-x-4 sm:space-y-0 relative",
-    month: "space-y-4 !m-0",
+    month: "space-y-4 !m-0 w-full",
     month_caption: "flex justify-center pt-1 relative items-center",
     caption_label: "text-sm font-medium",
     nav: "space-x-1 flex items-center justify-between",
@@ -23,9 +23,9 @@ export const getClassNames = (props: CalendarProps): Partial<ClassNames> => {
       "absolute top-0 right-0 z-10 !m-0"
     ),
     month_grid: "w-full border-collapse space-y-1",
-    weekdays: "flex",
+    weekdays: "flex justify-between",
     weekday: "text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]",
-    week: "flex w-full mt-2",
+    week: "flex w-full mt-2 justify-between",
     day: cn(
       "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md",
       props.mode === "range"
