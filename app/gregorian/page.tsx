@@ -2,7 +2,7 @@
 
 import React from "react";
 import { CalendarGregorian } from "@/components/calendar/calendar-gregorian";
-import { formatWeekdayName } from "@/lib/calendar";
+import { gregorianFormatWeekdayName } from "@/lib/calendar";
 
 export default function GregorianCalendarPage() {
   return (
@@ -14,7 +14,7 @@ export default function GregorianCalendarPage() {
         <div className="w-[400px]">
           <CalendarGregorian
             mode="single"
-            formatters={{ formatWeekdayName: formatWeekdayName }}
+            formatters={{ formatWeekdayName: gregorianFormatWeekdayName }}
           />
         </div>
       </div>

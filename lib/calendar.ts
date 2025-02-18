@@ -8,7 +8,7 @@ export const jalaliFormatWeekdayName: Formatters["formatWeekdayName"] = (
   return jalaliFormat(day, "EEE");
 };
 
-export const formatWeekdayName: Formatters["formatWeekdayName"] = (
+export const gregorianFormatWeekdayName: Formatters["formatWeekdayName"] = (
   day: Date
 ) => {
   return format(day, "EEE");
