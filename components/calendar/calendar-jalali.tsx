@@ -7,14 +7,14 @@ import { faIR } from "date-fns-jalali/locale";
 import { cn } from "@/lib/utils";
 import { getClassNames } from "./calendar.styles";
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>;
+export type CalendarJalaliProps = React.ComponentProps<typeof DayPicker>;
 
 function CalendarJalali({
   className,
   classNames,
   showOutsideDays = true,
   ...props
-}: CalendarProps) {
+}: CalendarJalaliProps) {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
