@@ -22,7 +22,7 @@ export function MultiplePickerJalali() {
         <Button
           variant={"outline"}
           className={cn(
-            "min-w-[280px] justify-start text-left font-normal",
+            "w-[260px] justify-start text-left font-normal",
             !dateList.length && "text-muted-foreground"
           )}
         >
