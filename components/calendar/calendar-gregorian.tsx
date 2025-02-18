@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
 function CalendarGregorian({
+  showOutsideDays = true,
+  components,
   className,
   classNames,
-  showOutsideDays = true,
   ...props
 }: CalendarProps) {
   return (
@@ -30,6 +31,7 @@ function CalendarGregorian({
             return <ChevronLeftIcon className="h-4 w-4" />;
           return <span />;
         },
+        ...components,
       }}
       {...props}
     />

@@ -10,9 +10,10 @@ import { getClassNames } from "./calendar.styles";
 export type CalendarJalaliProps = React.ComponentProps<typeof DayPicker>;
 
 function CalendarJalali({
+  components,
+  showOutsideDays = true,
   className,
   classNames,
-  showOutsideDays = true,
   ...props
 }: CalendarJalaliProps) {
   return (
@@ -32,6 +33,7 @@ function CalendarJalali({
             return <ChevronLeftIcon className="h-4 w-4" />;
           return <span />;
         },
+        ...components,
       }}
       locale={faIR}
       {...props}
