@@ -6,6 +6,7 @@ import { DatePickerJalali } from "@/components/calendar/examples/single-picker-j
 import { RangePickerJalali } from "@/components/calendar/examples/range-picker-jalali";
 import { MultiplePickerJalali } from "@/components/calendar/examples/multiple-picker-jalali";
 import { jalaliFormatWeekdayName } from "@/lib/calendar";
+import { DropdownPickerJalali } from "@/components/calendar/examples/dropdown-picker-jalali";
 
 export default function Home() {
   return (
@@ -26,6 +27,10 @@ export default function Home() {
             />
           </div>
         </div>
+      </div>
+      <div className="space-y-5">
+        <h3>تقویم های پیشرفته</h3>
+        <DropdownPickerJalali />
       </div>
     </div>
   );
