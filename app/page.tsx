@@ -5,14 +5,7 @@ import { CalendarJalali } from "@/components/calendar/calendar-jalali";
 import { DatePickerJalali } from "@/components/calendar/examples/single-picker-jalali";
 import { RangePickerJalali } from "@/components/calendar/examples/range-picker-jalali";
 import { MultiplePickerJalali } from "@/components/calendar/examples/multiple-picker-jalali";
-import { Formatters } from "react-day-picker";
-import { format as jalaliFormat } from "date-fns-jalali";
-
-const jalaliFormatWeekdayName: Formatters["formatWeekdayName"] = (
-  day: Date
-) => {
-  return jalaliFormat(day, "EEE");
-};
+import { jalaliFormatWeekdayName } from "@/lib/calendar";
 
 export default function Home() {
   return (
