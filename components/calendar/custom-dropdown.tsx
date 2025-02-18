@@ -65,7 +65,7 @@ export default function CustomDropdown({
             value={value.toString()}
             disabled={disabled}
             className="min-w-[var(--radix-popper-anchor-width)] pr-7"
-            dir="rtl"
+            dir={dir}
           >
             {label}
           </SelectItem>
