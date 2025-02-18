@@ -7,7 +7,7 @@ import { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { CalendarGregorian } from "../calendar-gregorian";
 import {
   Popover,
   PopoverContent,
@@ -39,7 +39,11 @@ export function RangePicker() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar mode="range" selected={dateRange} onSelect={setDateRange} />
+        <CalendarGregorian
+          mode="range"
+          selected={dateRange}
+          onSelect={setDateRange}
+        />
       </PopoverContent>
     </Popover>
   );

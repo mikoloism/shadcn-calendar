@@ -6,7 +6,7 @@ import { Calendar as CalendarIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { CalendarGregorian } from "../calendar-gregorian";
 import {
   Popover,
   PopoverContent,
@@ -31,7 +31,7 @@ export function DatePicker() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar mode="single" selected={date} onSelect={setDate} />
+        <CalendarGregorian mode="single" selected={date} onSelect={setDate} />
       </PopoverContent>
     </Popover>
   );

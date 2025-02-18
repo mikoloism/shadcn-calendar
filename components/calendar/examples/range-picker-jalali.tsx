@@ -3,18 +3,19 @@
 import * as React from "react";
 import { format } from "date-fns-jalali";
 import { Calendar as CalendarIcon } from "lucide-react";
+import { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { CalendarJalali } from "@/components/ui/calendar-jalali";
+import { CalendarJalali } from "../calendar-jalali";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function DatePickerJalali() {
-  const [date, setDate] = React.useState<Date>();
+export function RangePickerJalali() {
+  const [dateRange, setDateRange] = React.useState<DateRange>();
 
   return (
     <Popover>
@@ -23,23 +24,25 @@ export function DatePickerJalali() {
           variant={"outline"}
           className={cn(
             "w-[280px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
+            !dateRange && "text-muted-foreground"
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? (
-            format(date, "PPP")
+          {dateRange ? (
+            <span>
+              از {dateRange.from && format(dateRange.from, "PPP")} تا{" "}
+              {dateRange.to && format(dateRange.to, "PPP")}
+            </span>
           ) : (
-            <span>{"یک تاریخ را انتخاب کنید"}</span>
+            <span>{"محدوده مورد نظر را انتخاب کنید"}</span>
           )}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
         <CalendarJalali
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          autoFocus
+          mode="range"
+          selected={dateRange}
+          onSelect={setDateRange}
         />
       </PopoverContent>
     </Popover>

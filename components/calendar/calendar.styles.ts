@@ -1,4 +1,4 @@
-import { CalendarProps } from "@/components/ui/calendar";
+import { CalendarProps } from "@/components/calendar/calendar-gregorian";
 import { ClassNames } from "react-day-picker";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

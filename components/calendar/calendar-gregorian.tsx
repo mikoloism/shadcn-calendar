@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
-function Calendar({
+function CalendarGregorian({
   className,
   classNames,
   showOutsideDays = true,
@@ -35,6 +35,6 @@ function Calendar({
     />
   );
 }
-Calendar.displayName = "Calendar";
+CalendarGregorian.displayName = "CalendarGregorian";
 
-export { Calendar };
+export { CalendarGregorian };

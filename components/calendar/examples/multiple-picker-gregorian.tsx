@@ -6,7 +6,7 @@ import { Calendar as CalendarIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { CalendarGregorian } from "../calendar-gregorian";
 import {
   Popover,
   PopoverContent,
@@ -39,7 +39,7 @@ export function MultiplePicker() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar
+        <CalendarGregorian
           mode="multiple"
           selected={dateList}
           onSelect={setDateList}
