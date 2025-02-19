@@ -24,17 +24,17 @@ export default function CustomDropdown({
   props: DropDownType;
   dir: "ltr" | "rtl";
 }): React.JSX.Element | undefined {
-  const { options, value } = props;
-  const handleCalendarChange = (
-    selectedValue: string | number,
-    onChange: React.ChangeEventHandler<HTMLSelectElement>
-  ) => {
-    const event = {
-      target: {
-        value: String(selectedValue),
-      },
-    } as React.ChangeEvent<HTMLSelectElement>;
-    onChange(event);
+  const { options, value, onChange } = props;
+
+  const handleCalendarChange = (newValue: string) => {
+    if (onChange) {
+      const event = {
+        target: {
+          value: String(newValue),
+        },
+      } as React.ChangeEvent<HTMLSelectElement>;
+      onChange(event);
+    }
   };
 
   return (
@@ -42,11 +42,7 @@ export default function CustomDropdown({
       {...{ ...props, dir }}
       value={value?.toString()}
       defaultValue={value?.toString()}
-      onValueChange={(selectedValue: string) => {
-        if (props.onChange) {
-          handleCalendarChange(selectedValue, props.onChange);
-        }
-      }}
+      onValueChange={handleCalendarChange}
     >
       <SelectTrigger
         className={cn(
