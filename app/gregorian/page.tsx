@@ -4,6 +4,7 @@ import React from "react";
 import { CalendarGregorian } from "@/components/calendar/calendar-gregorian";
 import { gregorianFormatWeekdayName } from "@/lib/calendar";
 import { DropdownPickerGregorian } from "@/components/calendar/examples/dropdown-picker-gregorian";
+import { BookedPickerGregorian } from "@/components/calendar/examples/booked-picker-gregorian";
 
 export default function GregorianCalendarPage() {
   return (
@@ -24,7 +25,10 @@ export default function GregorianCalendarPage() {
 
       <div className="space-y-5">
         <h3>Advanced Calenders</h3>
-        <DropdownPickerGregorian />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <DropdownPickerGregorian />
+          <BookedPickerGregorian />
+        </div>
       </div>
     </div>
   );

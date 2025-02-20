@@ -7,6 +7,7 @@ import { RangePickerJalali } from "@/components/calendar/examples/range-picker-j
 import { MultiplePickerJalali } from "@/components/calendar/examples/multiple-picker-jalali";
 import { jalaliFormatWeekdayName } from "@/lib/calendar";
 import { DropdownPickerJalali } from "@/components/calendar/examples/dropdown-picker-jalali";
+import { BookedPickerJalali } from "@/components/calendar/examples/booked-picker-jalali";
 
 export default function Home() {
   return (
@@ -30,7 +31,10 @@ export default function Home() {
       </div>
       <div className="space-y-5">
         <h3>تقویم های پیشرفته</h3>
-        <DropdownPickerJalali />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <DropdownPickerJalali />
+          <BookedPickerJalali />
+        </div>
       </div>
     </div>
   );
