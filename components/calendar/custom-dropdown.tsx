@@ -19,12 +19,11 @@ type DropDownType = {
 
 export default function CustomDropdown({
   props,
-  dir,
 }: {
   props: DropDownType;
-  dir: "ltr" | "rtl";
 }): React.JSX.Element | undefined {
-  const { options, value, onChange } = props;
+  const { options, value, onChange, dir } = props;
+  const validDir = dir as "ltr" | "rtl" | undefined;
 
   const handleCalendarChange = (newValue: string) => {
     if (onChange) {
@@ -39,10 +38,11 @@ export default function CustomDropdown({
 
   return (
     <Select
-      {...{ ...props, dir }}
+      {...props}
       value={value?.toString()}
       defaultValue={value?.toString()}
       onValueChange={handleCalendarChange}
+      dir={validDir}
     >
       <SelectTrigger
         className={cn(
@@ -61,7 +61,6 @@ export default function CustomDropdown({
             value={value.toString()}
             disabled={disabled}
             className="min-w-[var(--radix-popper-anchor-width)] pr-7"
-            dir={dir}
           >
             {label}
           </SelectItem>
