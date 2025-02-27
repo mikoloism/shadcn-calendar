@@ -68,7 +68,7 @@ export function BookedPickerJalali() {
           }}
           components={{
             Dropdown(props) {
-              return <CustomDropdown props={props} dir="rtl" />;
+              return <CustomDropdown props={props} />;
             },
           }}
           startMonth={new Date(2020, 0)}
