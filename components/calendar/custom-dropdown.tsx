@@ -23,7 +23,7 @@ export default function CustomDropdown({
   props: DropDownType;
 }): React.JSX.Element | undefined {
   const { options, value, onChange, dir } = props;
-  const validDir = dir as "ltr" | "rtl" | undefined;
+  const validDir = dir === "ltr" || dir === "rtl" ? dir : undefined;
 
   const handleCalendarChange = (newValue: string) => {
     if (onChange) {
