@@ -14,7 +14,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { jalaliFormatWeekdayName, normalizeDate } from "@/lib/calendar";
-import CustomDropdown from "../custom-dropdown";
+import { DropdownWrapper, useDropdowns } from "../custom-dropdown";
 
 const todayDate = new Date();
 const bookedDates = [
@@ -30,6 +30,8 @@ const bookedDates = [
 
 export function BookedPickerJalali() {
   const [date, setDate] = React.useState<Date>();
+  const [bookedOpen, setBookedOpen] = React.useState(false);
+  const { openDropdowns, setDropdownOpen, isAnyDropdownOpen } = useDropdowns();
 
   function handleDayChange(value: Date | undefined) {
     const isSelectBooked = bookedDates.find(
@@ -39,7 +41,10 @@ export function BookedPickerJalali() {
   }
 
   return (
-    <Popover>
+    <Popover
+      open={bookedOpen}
+      onOpenChange={(e) => !isAnyDropdownOpen && setBookedOpen(e)}
+    >
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
@@ -67,9 +72,13 @@ export function BookedPickerJalali() {
             booked: "bg-chart-2/50 rounded-md text-white pointer-events-none",
           }}
           components={{
-            Dropdown(props) {
-              return <CustomDropdown props={props} />;
-            },
+            Dropdown: (props) => (
+              <DropdownWrapper
+                props={props}
+                openDropdowns={openDropdowns}
+                setDropdownOpen={setDropdownOpen}
+              />
+            ),
           }}
           startMonth={new Date(2020, 0)}
           selected={date}

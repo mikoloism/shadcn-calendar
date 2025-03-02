@@ -19,8 +19,12 @@ type DropDownType = {
 
 export default function CustomDropdown({
   props,
+  open,
+  onOpenChange,
 }: {
   props: DropDownType;
+  open: boolean;
+  onOpenChange: (value: boolean) => void;
 }): React.JSX.Element | undefined {
   const { options, value, onChange, dir } = props;
   const validDir = dir === "ltr" || dir === "rtl" ? dir : undefined;
@@ -40,6 +44,8 @@ export default function CustomDropdown({
     <Select
       {...props}
       value={value?.toString()}
+      open={open}
+      onOpenChange={onOpenChange}
       defaultValue={value?.toString()}
       onValueChange={handleCalendarChange}
       dir={validDir}
@@ -53,7 +59,6 @@ export default function CustomDropdown({
       >
         <SelectValue />
       </SelectTrigger>
-      {/* fix select bug: click outside of the select and will close the popover too */}
       <SelectContent>
         {options?.map(({ value, label, disabled }) => (
           <SelectItem
@@ -67,5 +72,39 @@ export default function CustomDropdown({
         ))}
       </SelectContent>
     </Select>
+  );
+}
+
+export function useDropdowns(initial = { month: false, year: false }) {
+  const [openDropdowns, setOpenDropdowns] = React.useState(initial);
+
+  const setDropdownOpen = (dropdownType: "month" | "year", isOpen: boolean) => {
+    setOpenDropdowns((prev) => ({ ...prev, [dropdownType]: isOpen }));
+  };
+
+  const isAnyDropdownOpen = Object.values(openDropdowns).some(Boolean);
+
+  return { openDropdowns, setDropdownOpen, isAnyDropdownOpen };
+}
+
+export function DropdownWrapper({
+  props,
+  openDropdowns,
+  setDropdownOpen,
+}: {
+  props: DropDownType;
+  openDropdowns: { [key: string]: boolean };
+  setDropdownOpen: (dropdownType: "month" | "year", isOpen: boolean) => void;
+}) {
+  const dropdownType = props["aria-label"]?.includes("Month")
+    ? "month"
+    : "year";
+
+  return (
+    <CustomDropdown
+      props={props}
+      open={openDropdowns[dropdownType]}
+      onOpenChange={(isOpen: boolean) => setDropdownOpen(dropdownType, isOpen)}
+    />
   );
 }
