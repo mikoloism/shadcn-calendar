@@ -23,8 +23,9 @@ export default function CustomDropdown({
   onOpenChange,
 }: {
   props: DropDownType;
-  open: boolean;
-  onOpenChange: (value: boolean) => void;
+  // TODO: make bellow types required
+  open?: boolean;
+  onOpenChange?: (value: boolean) => void;
 }): React.JSX.Element | undefined {
   const { options, value, onChange, dir } = props;
   const validDir = dir === "ltr" || dir === "rtl" ? dir : undefined;
