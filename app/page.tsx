@@ -1,51 +1,44 @@
 "use client";
+
 import React from "react";
-import { DatePickerJalali } from "@/components/ui/date-picker-jalali";
-import { RangePickerJalali } from "@/components/ui/range-picker-jalali";
-import { MultiplePickerJalali } from "@/components/ui/multiple-picker-jalali";
-import { CalendarJalali } from "@/components/ui/calendar-jalali";
-import { Calendar } from "@/components/ui/calendar";
-import { Formatters } from "react-day-picker";
-import { format as jalaliFormat } from "date-fns-jalali";
-import { format } from "date-fns";
-
-const jalaliFormatWeekdayName: Formatters["formatWeekdayName"] = (
-  day: Date
-) => {
-  return jalaliFormat(day, "EEE");
-};
-
-const formatWeekdayName: Formatters["formatWeekdayName"] = (day: Date) => {
-  return format(day, "EEE");
-};
+import { CalendarJalali } from "@/components/calendar/calendar-jalali";
+import { DatePickerJalali } from "@/components/calendar/examples/single-picker-jalali";
+import { RangePickerJalali } from "@/components/calendar/examples/range-picker-jalali";
+import { MultiplePickerJalali } from "@/components/calendar/examples/multiple-picker-jalali";
+import { jalaliFormatWeekdayName } from "@/lib/calendar";
+import { DropdownPickerJalali } from "@/components/calendar/examples/dropdown-picker-jalali";
+import { BookedPickerJalali } from "@/components/calendar/examples/booked-picker-jalali";
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 export default function Home() {
   return (
-    <div className="flex justify-center flex-col gap-5 items-center z-10 mb-36">
-      <h2>App</h2>
-
-      <DatePickerJalali />
-      <br />
-      <RangePickerJalali />
-      <br />
-      <MultiplePickerJalali />
-      <br />
-      <CalendarJalali mode="single" />
-      <div className="w-[400px]">
-        <CalendarJalali
-          mode="single"
-          formatters={{ formatWeekdayName: jalaliFormatWeekdayName }}
-        />
+    <LayoutWrapper>
+      <div className="flex flex-col gap-12 z-10 mb-36">
+        <div className="space-y-5">
+          <h3>تقویم های جلالی</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <DatePickerJalali />
+            <RangePickerJalali />
+            <MultiplePickerJalali />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-5">
+            <CalendarJalali mode="single" />
+            <div className="w-[400px]">
+              <CalendarJalali
+                mode="single"
+                formatters={{ formatWeekdayName: jalaliFormatWeekdayName }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="space-y-5">
+          <h3>تقویم های پیشرفته</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <DropdownPickerJalali />
+            <BookedPickerJalali />
+          </div>
+        </div>
       </div>
-      <br />
-      <Calendar mode="single" />
-      <br />
-      <div className="w-[400px]">
-        <Calendar
-          mode="single"
-          formatters={{ formatWeekdayName: formatWeekdayName }}
-        />
-      </div>
-    </div>
+    </LayoutWrapper>
   );
 }

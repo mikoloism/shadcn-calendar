@@ -1,4 +1,4 @@
-import { CalendarProps } from "@/components/ui/calendar";
+import { CalendarProps } from "./calendar-gregorian";
 import { ClassNames } from "react-day-picker";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -11,10 +11,18 @@ export const getClassNames = (props: CalendarProps): Partial<ClassNames> => {
     month: "space-y-4 !m-0 w-full",
     month_caption: "flex justify-center pt-1 relative items-center",
     caption_label: "text-sm font-medium",
+    dropdown: "w-fit h-full border border-primary p-2",
+    dropdowns: "flex items-center justify-center gap-3",
+    dropdown_root: " h-full",
+    months_dropdown:
+      "bg-background text-foreground py-1 px-2 rounded-md border-input cursor-pointer",
+    years_dropdown:
+      "bg-background text-foreground py-1 px-2 rounded-md border-input cursor-pointer",
     nav: "space-x-1 flex items-center justify-between",
     button_next: cn(
       buttonVariants({ variant: "outline" }),
-      "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+      "h-7 w-7 bg-transparent p-0 opacity-50",
+      "hover:opacity-100",
       "absolute top-0 left-0 z-10 !m-0"
     ),
     button_previous: cn(
@@ -42,9 +50,10 @@ export const getClassNames = (props: CalendarProps): Partial<ClassNames> => {
     range_end: "day-range-end",
     selected:
       "bg-primary rounded-md text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-    today: "bg-accent text-accent-foreground rounded-md",
+    today:
+      "bg-primary/10 aria-selected:bg-primary text-accent-foreground rounded-md",
     outside:
-      "day-outside text-muted-foreground opacity-50  aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
+      "day-outside text-muted-foreground opacity-50 aria-selected:bg-primary/60",
     disabled: "text-muted-foreground opacity-50",
     range_middle:
       "aria-selected:bg-accent aria-selected:text-accent-foreground",

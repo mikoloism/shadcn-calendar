@@ -1,6 +1,4 @@
-import type { Metadata } from "next";
-import { iranSans, iranSansFaNum } from "./fonts";
-import "./globals.css";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Shadcnui Jalali Date Picker",
@@ -9,16 +7,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang="fa" dir="rtl">
-      <body
-        className={`${iranSansFaNum.className}, ${iranSans.className} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+}) {
+  return <>{children}</>;
 }

@@ -1,19 +1,21 @@
 "use client";
 
 import * as React from "react";
-import { format } from "date-fns-jalali";
+import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { CalendarJalali } from "@/components/ui/calendar-jalali";
+import { CalendarGregorian } from "../calendar-gregorian";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { gregorianFormatWeekdayName } from "@/lib/calendar";
+import CustomDropdown from "../custom-dropdown";
 
-export function DatePickerJalali() {
+export function DropdownPickerGregorian() {
   const [date, setDate] = React.useState<Date>();
 
   return (
@@ -27,19 +29,27 @@ export function DatePickerJalali() {
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? (
-            format(date, "PPP")
-          ) : (
-            <span>{"یک تاریخ را انتخاب کنید"}</span>
-          )}
+          {date ? format(date, "PPP") : <span>Choose a Date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <CalendarJalali
+        <CalendarGregorian
           mode="single"
+          captionLayout="dropdown"
+          components={{
+            Dropdown(props) {
+              return <CustomDropdown props={props} />;
+            },
+          }}
+          startMonth={new Date(2020, 0)}
           selected={date}
           onSelect={setDate}
-          autoFocus
+          defaultMonth={date}
+          formatters={{ formatWeekdayName: gregorianFormatWeekdayName }}
+          className="w-[380px]"
+          classNames={{
+            month_caption: "",
+          }}
         />
       </PopoverContent>
     </Popover>

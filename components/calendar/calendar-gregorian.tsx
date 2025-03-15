@@ -2,23 +2,22 @@
 
 import * as React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
-import { DayPicker } from "react-day-picker/jalali";
-import { faIR } from "date-fns-jalali/locale";
-import { cn } from "@/lib/utils";
+import { DayPicker } from "react-day-picker";
 import { getClassNames } from "./calendar.styles";
+import { cn } from "@/lib/utils";
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
-function CalendarJalali({
+function CalendarGregorian({
+  components,
+  showOutsideDays = true,
   className,
   classNames,
-  showOutsideDays = true,
   ...props
 }: CalendarProps) {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      dir="rtl"
       className={cn("p-3", className)}
       classNames={{
         ...getClassNames(props),
@@ -32,12 +31,12 @@ function CalendarJalali({
             return <ChevronLeftIcon className="h-4 w-4" />;
           return <span />;
         },
+        ...components,
       }}
-      locale={faIR}
       {...props}
     />
   );
 }
-CalendarJalali.displayName = "CalendarJalali";
+CalendarGregorian.displayName = "CalendarGregorian";
 
-export { CalendarJalali };
+export { CalendarGregorian };
