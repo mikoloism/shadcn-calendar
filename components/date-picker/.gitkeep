@@ -1,1 +1,3 @@
-- TODO: implement DatePicker component 
+- TODO: implement DatePicker component
+- TODO: implement based on native HTML <input type="date" /> references
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date
