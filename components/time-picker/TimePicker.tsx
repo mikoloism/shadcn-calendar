@@ -2,19 +2,19 @@
 
 import * as React from "react";
 
-import {cn} from "@/lib/utils";
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import { useTimePicker, UseTimePickerOption } from "./useTimePicker";
 
-export interface Props
+export interface TimePickerProps
   extends Omit<React.ComponentProps<"input">, "type" | keyof UseTimePickerOption>,
     UseTimePickerOption {
   readOnly?: boolean;
 }
 
-function TimePicker(props: Props): React.ReactNode {
+function TimePicker(props: TimePickerProps): React.ReactNode {
   const { defaultValue, max, min, onChange, readOnly, className, ...actualProps } = props;
   const time = useTimePicker({ defaultValue, max, min, onChange });
   const onHoursBlur = time.handleHoursBlur(() => {});
