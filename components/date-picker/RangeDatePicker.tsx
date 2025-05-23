@@ -11,8 +11,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover";
+import type { CalendarType } from "~/lib/calendar";
 import { cn } from "~/lib/utils";
-import DateFactory, { type CalendarType } from "./formatter";
+import DateFactory from "./formatter";
 
 type DateRange =
   | OriginalDateRange
@@ -39,13 +40,11 @@ function RangeDatePicker(props: RangeDatePickerProps): React.ReactNode {
       ? {
           from:
             typeof props.defaultValue.from === "string"
-              ? // @ts-expect-error 'both signature on union are same'
-                parse(props.defaultValue.from, NATIVE_DATE_FORMAT, date)
+              ? parse(props.defaultValue.from, NATIVE_DATE_FORMAT, date)
               : props.defaultValue.from,
           to:
             typeof props.defaultValue.to === "string"
-              ? // @ts-expect-error 'both signature on union are same'
-                parse(props.defaultValue.to, NATIVE_DATE_FORMAT, date)
+              ? parse(props.defaultValue.to, NATIVE_DATE_FORMAT, date)
               : props.defaultValue.to,
         }
       : undefined;

@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar as CalendarIcon } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import * as React from "react";
 import { Calendar } from "~/components/calendar/mod";
 import { Button } from "~/components/ui/button";
@@ -10,8 +10,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover";
+import type { CalendarType } from "~/lib/calendar";
 import { cn } from "~/lib/utils";
-import DateFactory, { type CalendarType } from "./formatter";
+import DateFactory from "./formatter";
 
 const NATIVE_DATE_FORMAT = "yyyy-MM-dd";
 const DEFAULT_PLACEHOLDER = "----/--/--";
