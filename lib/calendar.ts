@@ -1,6 +1,6 @@
-import { Formatters } from "react-day-picker";
-import { format as jalaliFormat } from "date-fns-jalali";
 import { format } from "date-fns";
+import { format as jalaliFormat } from "date-fns-jalali";
+import type { Formatters } from "react-day-picker";
 
 export const jalaliFormatWeekdayName: Formatters["formatWeekdayName"] = (
   day: Date
@@ -17,3 +17,9 @@ export const gregorianFormatWeekdayName: Formatters["formatWeekdayName"] = (
 export function normalizeDate(date: Date): Date {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
+
+/** @internal */
+export type CalendarType = "gregorian" | "persian";
+
+/** @internal */
+export const DEFAULT_CALENDAR_TYPE: CalendarType = "persian";
