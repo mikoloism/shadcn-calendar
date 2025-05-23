@@ -1,8 +1,11 @@
-import React from "react";
-import GregorianCalendar, { type GregorianCalendarProps } from "./GregorianCalendar";
-import PersianCalendar, { type PersianCalendarProps } from "./PersianCalendar";
+import * as React from "react";
+import type { CalendarType } from "~/lib/calendar";
+import type { GregorianCalendarProps } from "./GregorianCalendar";
+import GregorianCalendar from "./GregorianCalendar";
+import type { PersianCalendarProps } from "./PersianCalendar";
+import PersianCalendar from "./PersianCalendar";
 
-export type CalendarProps = { calendarType?: "persian" | "gregorian" } & (
+export type CalendarProps = { calendarType?: CalendarType } & (
   | GregorianCalendarProps
   | PersianCalendarProps
 );

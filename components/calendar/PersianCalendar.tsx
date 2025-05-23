@@ -9,7 +9,13 @@ import * as styles from "./calendar.styles";
 export type PersianCalendarProps = React.ComponentProps<typeof DayPicker>;
 
 function PersianCalendar(props: PersianCalendarProps) {
-  const { components, showOutsideDays = true, className, classNames, ...extraProps } = props;
+  const {
+    components,
+    showOutsideDays = true,
+    className,
+    classNames,
+    ...extraProps
+  } = props;
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}

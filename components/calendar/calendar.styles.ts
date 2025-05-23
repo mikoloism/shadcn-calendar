@@ -1,16 +1,22 @@
 import { ClassNames } from "react-day-picker";
-
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { buttonVariants } from "~/components/ui/button";
+import { cn } from "~/lib/utils";
 import { GregorianCalendarProps } from "./GregorianCalendar";
 
+/** @internal */
 export const DayPicker = (className?: string): string => cn("p-3", className);
+
+/** @internal */
 export const Chevron: string = "h-4 w-4";
 
-export const getClassNames = (props: GregorianCalendarProps): Partial<ClassNames> => {
+/** @internal */
+export const getClassNames = (
+  props: GregorianCalendarProps
+): Partial<ClassNames> => {
   return {
     root: "border rounded-md",
-    months: "flex flex-col items-center space-y-4 sm:space-x-4 sm:space-y-0 relative",
+    months:
+      "flex flex-col items-center space-y-4 sm:space-x-4 sm:space-y-0 relative",
     month: "space-y-4 !m-0 w-full",
     month_caption: "flex justify-center pt-1 relative items-center",
     caption_label: "text-sm font-medium",
@@ -53,10 +59,13 @@ export const getClassNames = (props: GregorianCalendarProps): Partial<ClassNames
     range_end: "day-range-end",
     selected:
       "bg-primary rounded-md text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-    today: "bg-primary/10 aria-selected:bg-primary text-accent-foreground rounded-md",
-    outside: "day-outside text-muted-foreground opacity-50 aria-selected:bg-primary/60",
+    today:
+      "bg-primary/10 aria-selected:bg-primary text-accent-foreground rounded-md",
+    outside:
+      "day-outside text-muted-foreground opacity-50 aria-selected:bg-primary/60",
     disabled: "text-muted-foreground opacity-50",
-    range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
+    range_middle:
+      "aria-selected:bg-accent aria-selected:text-accent-foreground",
     hidden: "invisible",
   };
 };

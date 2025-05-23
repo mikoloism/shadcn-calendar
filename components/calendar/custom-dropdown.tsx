@@ -1,9 +1,15 @@
 "use client";
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
-import React from "react";
+import * as React from "react";
 import { ClassNames, CustomComponents, DropdownOption } from "react-day-picker";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+import { cn } from "~/lib/utils";
 
 type DropDownType = {
   components: CustomComponents;
@@ -18,7 +24,9 @@ type CustomDropdownProps = {
   onOpenChange?: (value: boolean) => void;
 };
 
-export default function CustomDropdown(props: CustomDropdownProps): React.JSX.Element | undefined {
+export default function CustomDropdown(
+  props: CustomDropdownProps
+): React.ReactNode {
   const { dropdownProps: dropdownProps, open, onOpenChange } = props;
   const { options, value, onChange, dir } = dropdownProps;
   const validatedDirection = dir === "ltr" || dir === "rtl" ? dir : undefined;
@@ -38,23 +46,30 @@ export default function CustomDropdown(props: CustomDropdownProps): React.JSX.El
       onOpenChange={onOpenChange}
       defaultValue={value?.toString()}
       onValueChange={handleCalendarChange}
-      dir={validatedDirection}>
+      dir={validatedDirection}
+    >
       <SelectTrigger
         className={cn(
           "px-2 py-1 h-7 w-24 font-medium hover:bg-accent",
           "transition-colors",
           "hover:bg-accent"
-        )}>
+        )}
+      >
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        {options?.map(function mapOptions({ value, label, disabled }): React.ReactNode {
+        {options?.map(function mapOptions({
+          value,
+          label,
+          disabled,
+        }): React.ReactNode {
           return (
             <SelectItem
               key={value}
               value={value.toString()}
               disabled={disabled}
-              className="min-w-[var(--radix-popper-anchor-width)] pr-7">
+              className="min-w-[var(--radix-popper-anchor-width)] pr-7"
+            >
               {label}
             </SelectItem>
           );
@@ -87,7 +102,9 @@ export function DropdownWrapper({
   openDropdowns,
   setDropdownOpen,
 }: DropdownWrapperProps) {
-  const dropdownType = dropdownProps["aria-label"]?.includes("Month") ? "month" : "year";
+  const dropdownType = dropdownProps["aria-label"]?.includes("Month")
+    ? "month"
+    : "year";
   return (
     <CustomDropdown
       dropdownProps={dropdownProps}

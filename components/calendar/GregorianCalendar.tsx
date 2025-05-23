@@ -1,22 +1,27 @@
 "use client";
 
-import * as React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { enGB } from "date-fns/locale";
+import * as React from "react";
 import { DayPicker } from "react-day-picker";
 import * as styles from "./calendar.styles";
 
 export type GregorianCalendarProps = React.ComponentProps<typeof DayPicker>;
 
-function GregorianCalendar(props: GregorianCalendarProps): React.ReactNode {
-  const { components, showOutsideDays = true, className, classNames, ...extraProps } = props;
+function GregorianCalendar({
+  components,
+  showOutsideDays = true,
+  className,
+  classNames,
+  ...props
+}: GregorianCalendarProps): React.ReactNode {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
       dir="ltr"
       className={styles.DayPicker(className)}
       classNames={{
-        ...styles.getClassNames(extraProps),
+        ...styles.getClassNames(props),
         ...classNames,
       }}
       components={{
