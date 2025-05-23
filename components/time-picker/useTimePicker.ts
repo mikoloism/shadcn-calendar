@@ -42,27 +42,40 @@ export interface UseTimePickerReturn<T extends Hours = Hours24H> {
   getHours(): T;
   getMinutes(): Minutes;
   getValue(): TimeFormat<T>;
-  handleChange(fn: TimeChangeHandler<T>): (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange(
+    fn: TimeChangeHandler<T>
+  ): (ev: React.ChangeEvent<HTMLInputElement>) => void;
   handleHoursBlur(fn: TimeBlurHandler<T>): () => void;
-  handleHoursChange(fn: TimeChangeHandler<T>): (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  handleHoursChange(
+    fn: TimeChangeHandler<T>
+  ): (ev: React.ChangeEvent<HTMLInputElement>) => void;
   handleHoursKeyDown(
     fn: TimeKeyDownHandler<T>
   ): (ev: React.KeyboardEvent<HTMLInputElement>) => void;
   handleMinutesBlur(fn: TimeBlurHandler<T>): () => void;
-  handleMinutesChange(fn: TimeChangeHandler<T>): (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  handleMinutesChange(
+    fn: TimeChangeHandler<T>
+  ): (ev: React.ChangeEvent<HTMLInputElement>) => void;
   handleMinutesKeyDown(
     fn: TimeKeyDownHandler<T>
   ): (ev: React.KeyboardEvent<HTMLInputElement>) => void;
   increment(action: ActionOption): void;
   setHours(hours: T | number, option?: { shouldClamp?: boolean }): void;
-  setMinutes(minutes: Minutes | number, option?: { shouldClamp?: boolean }): void;
+  setMinutes(
+    minutes: Minutes | number,
+    option?: { shouldClamp?: boolean }
+  ): void;
 }
 
 function useTimePicker<THours extends Hours = Hours24H>(
   option: UseTimePickerOption<THours> = DEFAULT_OPTION as unknown as UseTimePickerOption<THours>
 ): UseTimePickerReturn<THours> {
-  const minDate: Date = toDate(option?.min ?? (DEFAULT_MINIMUM as unknown as TimeFormat<THours>));
-  const maxDate: Date = toDate(option?.max ?? (DEFAULT_MAXIMUM as unknown as TimeFormat<THours>));
+  const minDate: Date = toDate(
+    option?.min ?? (DEFAULT_MINIMUM as unknown as TimeFormat<THours>)
+  );
+  const maxDate: Date = toDate(
+    option?.max ?? (DEFAULT_MAXIMUM as unknown as TimeFormat<THours>)
+  );
   const [value, setValue] = useState<TimeFormat<THours>>(
     toString(clamp(toDate(option?.defaultValue)))
   );
@@ -119,7 +132,10 @@ function useTimePicker<THours extends Hours = Hours24H>(
     hours: THours | number,
     option: { shouldClamp?: boolean } = { shouldClamp: true }
   ): void {
-    const valueDate: Date = setHoursFn(toDate(getValue()), parseInt(String(hours)));
+    const valueDate: Date = setHoursFn(
+      toDate(getValue()),
+      parseInt(String(hours))
+    );
     const nextTime: TimeFormat<THours> = toString(
       option.shouldClamp ? clamp(valueDate) : valueDate
     );
@@ -130,7 +146,10 @@ function useTimePicker<THours extends Hours = Hours24H>(
     minutes: Minutes | number,
     option: { shouldClamp?: boolean } = { shouldClamp: true }
   ): void {
-    const valueDate: Date = setMinutesFn(toDate(getValue()), parseInt(String(minutes)));
+    const valueDate: Date = setMinutesFn(
+      toDate(getValue()),
+      parseInt(String(minutes))
+    );
     const nextTime: TimeFormat<THours> = toString(
       option.shouldClamp ? clamp(valueDate) : valueDate
     );
@@ -242,4 +261,6 @@ type TimeChangeHandler<T extends Hours = Hours24H> = (
   value: TimeFormat<T>,
   ev: React.ChangeEvent<HTMLInputElement>
 ) => void;
-type TimeBlurHandler<T extends Hours = Hours24H> = (value: TimeFormat<T>) => void;
+type TimeBlurHandler<T extends Hours = Hours24H> = (
+  value: TimeFormat<T>
+) => void;

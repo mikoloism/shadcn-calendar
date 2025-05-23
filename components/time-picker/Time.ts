@@ -1,7 +1,10 @@
 export const NATIVE_TIME_FORMAT = "HH:mm";
 
 type DecimalDigit = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-type Period60 = DecimalDigit | `${DecimalDigit}` | `${0 | 1 | 2 | 3 | 4 | 5}${DecimalDigit}`;
+type Period60 =
+  | DecimalDigit
+  | `${DecimalDigit}`
+  | `${0 | 1 | 2 | 3 | 4 | 5}${DecimalDigit}`;
 export type Minutes = Period60;
 export type Seconds = Period60;
 export type Hours24H =
@@ -18,7 +21,7 @@ export type Hours12H =
 export type Hours = Hours12H | Hours24H;
 export type TimeFormat<
   H extends Hours = Hours,
-  HaveSeconds extends boolean = false,
+  HaveSeconds extends boolean = false
 > = `${H}:${Minutes}${HaveSeconds extends true ? `:${Seconds}` : ""}`;
 export type MilitaryTimeFormat = TimeFormat<Hours24H>;
 export type PureDisplayFormat = TimeFormat<Hours12H>;
